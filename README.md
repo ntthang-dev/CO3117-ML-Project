@@ -1,4 +1,5 @@
 # 🚘 Dự án Học Máy: Dự đoán Giá xe Audi đã qua sử dụng
+
 **(Machine Learning Project - Audi Car Price Prediction)**
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
@@ -14,20 +15,21 @@ Chào mừng đến với dự án của chúng mình! 👋
 Dự án này được xây dựng nhằm giải quyết bài toán **định giá xe ô tô cũ** một cách tự động. Thay vì phải đoán mò giá trị của một chiếc xe Audi dựa trên kinh nghiệm, hệ thống này sử dụng các thuật toán **Học máy (Machine Learning)** và **Học sâu (Deep Learning)** để phân tích dữ liệu lịch sử và đưa ra mức giá gợi ý chính xác nhất.
 
 **Mục tiêu chính:**
-* 📊 Phân tích các yếu tố ảnh hưởng đến giá xe.
-* 🤖 Xây dựng mô hình dự đoán giá với độ chính xác cao.
-* 🏆 So sánh hiệu quả giữa các thuật toán khác nhau.
+
+-   📊 Phân tích các yếu tố ảnh hưởng đến giá xe.
+-   🤖 Xây dựng mô hình dự đoán giá với độ chính xác cao.
+-   🏆 So sánh hiệu quả giữa các thuật toán khác nhau.
 
 ---
 
 ## 👥 Đội ngũ Thực hiện
 
-| STT | Thành viên | MSSV | Vai trò & Nhiệm vụ |
-|:---:|:-----------|:-----|:-------------------|
-| 1   | 👨‍💻 **Nguyễn Trọng Thắng** | 1915244 | Deep Learning (MLP), Ensemble, Docker, Tổng hợp |
-| 2   | 👨‍💻 **Lê Phương Vũ** | 2313954 | Mô hình SVM, Viết tài liệu |
-| 3   | 👨‍💻 **Nguyễn Thanh Lộc** | [MSSV] | Hồi quy tuyến tính, vẽ biểu đồ & Đánh giá |
-| 3   | 👨‍💻 **Đặng Quốc Bảo** | [MSSV] | Xử lý dữ liệu, Random Forest |
+| STT | Thành viên                | MSSV    | Vai trò & Nhiệm vụ                              |
+| :-: | :------------------------ | :------ | :---------------------------------------------- |
+|  1  | 👨‍💻 **Nguyễn Trọng Thắng** | 1915244 | Deep Learning (MLP), Ensemble, Docker, Tổng hợp |
+|  2  | 👨‍💻 **Lê Phương Vũ**       | 2313954 | Mô hình SVM, Viết tài liệu                      |
+|  3  | 👨‍💻 **Nguyễn Thanh Lộc**   | [MSSV]  | Hồi quy tuyến tính, vẽ biểu đồ & Đánh giá       |
+|  3  | 👨‍💻 **Đặng Quốc Bảo**      | [MSSV]  | Xử lý dữ liệu, Random Forest                    |
 
 ---
 
@@ -35,14 +37,14 @@ Dự án này được xây dựng nhằm giải quyết bài toán **định gi
 
 Mô hình được huấn luyện trên bộ dữ liệu **10,668 chiếc xe Audi**. Các thông tin được sử dụng để "dạy" máy tính bao gồm:
 
-* 🏎️ **Model:** Dòng xe (A1, A3, Q5, R8...)
-* 📅 **Year:** Năm sản xuất
-* ⚙️ **Transmission:** Loại hộp số (Tự động, Sàn, Bán tự động)
-* 🛣️ **Mileage:** Số dặm đã đi (Odo)
-* ⛽ **FuelType:** Loại nhiên liệu (Xăng, Dầu, Hybrid)
-* 💰 **Tax:** Thuế đường bộ
-* 🔥 **MPG:** Mức tiêu thụ nhiên liệu (Dặm/Gallon)
-* 🚀 **EngineSize:** Dung tích động cơ
+-   🏎️ **Model:** Dòng xe (A1, A3, Q5, R8...)
+-   📅 **Year:** Năm sản xuất
+-   ⚙️ **Transmission:** Loại hộp số (Tự động, Sàn, Bán tự động)
+-   🛣️ **Mileage:** Số dặm đã đi (Odo)
+-   ⛽ **FuelType:** Loại nhiên liệu (Xăng, Dầu, Hybrid)
+-   💰 **Tax:** Thuế đường bộ
+-   🔥 **MPG:** Mức tiêu thụ nhiên liệu (Dặm/Gallon)
+-   🚀 **EngineSize:** Dung tích động cơ
 
 ---
 
@@ -80,6 +82,7 @@ DỰ_ÁN_ML/
 ├── environment.yml         # Cấu hình môi trường (cho Conda)
 ├── Dockerfile              # Cấu hình đóng gói (cho Docker)
 └── README.md               # Bạn đang đọc file này <-
+```
 
 ## 🛠️ Hướng dẫn Cài đặt & Chạy (Installation)
 
@@ -90,6 +93,7 @@ DỰ_ÁN_ML/
 Đây là cách nhanh nhất nếu máy bạn đã cài Python.
 
 1. Mở Terminal (hoặc CMD/PowerShell) tại thư mục dự án.
+
 2. Cài đặt các thư viện cần thiết:
 
 ```bash
@@ -146,13 +150,13 @@ docker run --rm audi-prediction-app
 
 Khi bạn chạy lệnh `python main.py`, hệ thống sẽ tự động thực hiện các bước sau:
 
-* **Load dữ liệu:** Đọc file audi.csv.
-* **Tiền xử lý:** Tự động điền dữ liệu thiếu, chuyển đổi chữ thành số (Encoding).
-* **Huấn luyện:** Máy tính sẽ lần lượt "học" từ dữ liệu bằng 5 thuật toán khác nhau.
-* **Đánh giá:** In ra màn hình các chỉ số sai số (RMSE) và độ chính xác (R² Score).
-* **Trực quan hóa:**
-   * Hiện biểu đồ so sánh giá Thực tế vs Dự đoán.
-   * Hiện bảng xếp hạng xem thuật toán nào dự đoán chuẩn nhất.
+-   **Load dữ liệu:** Đọc file audi.csv.
+-   **Tiền xử lý:** Tự động điền dữ liệu thiếu, chuyển đổi chữ thành số (Encoding).
+-   **Huấn luyện:** Máy tính sẽ lần lượt "học" từ dữ liệu bằng 5 thuật toán khác nhau.
+-   **Đánh giá:** In ra màn hình các chỉ số sai số (RMSE) và độ chính xác (R² Score).
+-   **Trực quan hóa:**
+    -   Hiện biểu đồ so sánh giá Thực tế vs Dự đoán.
+    -   Hiện bảng xếp hạng xem thuật toán nào dự đoán chuẩn nhất.
 
 **Lưu ý:** Quá trình chạy có thể mất từ 30 giây đến 2 phút tùy vào cấu hình máy tính của bạn (do mô hình Deep Learning và SVM cần tính toán nhiều).
 
@@ -160,9 +164,8 @@ Khi bạn chạy lệnh `python main.py`, hệ thống sẽ tự động thực 
 
 ## 📝 Ghi chú
 
-* Dữ liệu audi.csv cần phải nằm trong thư mục data/.
-* Kết quả có thể chênh lệch rất nhỏ giữa các lần chạy do tính ngẫu nhiên của thuật toán, nhưng thứ hạng mô hình thường không đổi.
-
+-   Dữ liệu audi.csv cần phải nằm trong thư mục data/.
+-   Kết quả có thể chênh lệch rất nhỏ giữa các lần chạy do tính ngẫu nhiên của thuật toán, nhưng thứ hạng mô hình thường không đổi.
 
 **Cảm ơn các bạn đã quan tâm đến dự án này! ❤️**
 
