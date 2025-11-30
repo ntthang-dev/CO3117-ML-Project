@@ -28,8 +28,8 @@ Dự án này được xây dựng nhằm giải quyết bài toán **định gi
 | :-: | :------------------------ | :------ | :---------------------------------------------- |
 |  1  | 👨‍💻 **Nguyễn Trọng Thắng** | 1915244 | Deep Learning (MLP), Ensemble, Docker, Tổng hợp |
 |  2  | 👨‍💻 **Lê Phương Vũ**       | 2313954 | Mô hình SVM, Viết tài liệu                      |
-|  3  | 👨‍💻 **Nguyễn Thanh Lộc**   | [MSSV]  | Hồi quy tuyến tính, vẽ biểu đồ & Đánh giá       |
-|  3  | 👨‍💻 **Đặng Quốc Bảo**      | [MSSV]  | Xử lý dữ liệu, Random Forest                    |
+|  3  | 👨‍💻 **Nguyễn Thanh Lộc**   | 2311958  | Hồi quy tuyến tính, vẽ biểu đồ & Đánh giá       |
+|  4  | 👨‍💻 **Đặng Quốc Bảo**      | 2210200  | Xử lý dữ liệu, Random Forest                    |
 
 ---
 
