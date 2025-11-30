@@ -10,19 +10,20 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
 def run_ensemble(filepath):
+    """Train ensemble model combining multiple regressors."""
     print("\n=== Đang chạy thuật toán: Voting Ensemble ===")
     df = pd.read_csv(filepath)
     X = df.drop('price', axis=1)
     y = df['price']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Pipeline chung cho Voting (để đơn giản hóa việc kết hợp)
+    # Normalize numerical features and encode categorical features
     preprocessor = ColumnTransformer(transformers=[
         ('num', StandardScaler(), ['year', 'mileage', 'tax', 'mpg', 'engineSize']),
         ('cat', OneHotEncoder(handle_unknown='ignore'), ['model', 'transmission', 'fuelType'])
     ])
 
-    # Khởi tạo các model con với tham số tốt nhất (giả định đã tìm được)
+    # Combine four base models for ensemble prediction
     estimators = [
         ('lr', LinearRegression()),
         ('rf', RandomForestRegressor(n_estimators=120, random_state=42)),

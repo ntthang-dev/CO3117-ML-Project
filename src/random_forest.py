@@ -8,20 +8,20 @@ from sklearn.impute import SimpleImputer
 from scipy.stats import randint
 
 def run_random_forest(filepath):
+    """Train Random Forest with hyperparameter tuning via RandomizedSearchCV."""
     print("\n=== Đang chạy thuật toán: Random Forest ===")
-    # 1. Load và làm sạch cơ bản (theo notebook RF)
     df = pd.read_csv(filepath)
-    # Xử lý khoảng trắng
+    # Remove whitespace from columns and values
     df.columns = df.columns.str.strip()
     for col in df.select_dtypes(include='object').columns:
         df[col] = df[col].str.strip()
     
-    # 2. Chia dữ liệu
+    # Split features and target
     X = df.drop('price', axis=1)
     y = df['price']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # 3. Pipeline xử lý
+    # Preprocessing pipeline
     categorical_cols = ['model', 'transmission', 'fuelType']
     numerical_cols = ['year', 'mileage', 'tax', 'mpg', 'engineSize']
 
@@ -30,7 +30,7 @@ def run_random_forest(filepath):
         ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_cols)
     ])
 
-    # 4. Định nghĩa mô hình và tham số (từ notebook)
+    # Random Forest model with tuning parameter grid
     rf = RandomForestRegressor(random_state=42, n_jobs=-1)
     
     param_dist = {
@@ -43,7 +43,7 @@ def run_random_forest(filepath):
     
     pipeline = Pipeline(steps=[('preprocessor', preprocessor), ('regressor', rf)])
     
-    # 5. Tuning (Dùng RandomizedSearchCV như notebook)
+    # Hyperparameter optimization
     print("Đang tối ưu tham số (Tuning)...")
     search = RandomizedSearchCV(
         pipeline, param_distributions=param_dist, n_iter=5, cv=3, 

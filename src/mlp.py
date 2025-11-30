@@ -7,18 +7,20 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
 def run_mlp(filepath):
+    """Train multi-layer perceptron neural network model."""
     print("\n=== Đang chạy thuật toán: MLP (Deep Learning) ===")
     df = pd.read_csv(filepath)
     X = df.drop('price', axis=1)
     y = df['price']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+    # Scale numerical features and encode categorical features
     preprocessor = ColumnTransformer(transformers=[
         ('num', StandardScaler(), ['year', 'mileage', 'tax', 'mpg', 'engineSize']),
         ('cat', OneHotEncoder(handle_unknown='ignore'), ['model', 'transmission', 'fuelType'])
     ])
 
-    # Cấu hình mạng nơ-ron từ notebook Leader
+    # Two hidden layers (100, 50 neurons) with ReLU activation
     mlp = MLPRegressor(hidden_layer_sizes=(100, 50), activation='relu', solver='adam', 
                        max_iter=500, random_state=42)
 

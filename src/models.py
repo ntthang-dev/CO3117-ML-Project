@@ -12,7 +12,7 @@ def get_linear_regression(preprocessor):
     ])
 
 def get_random_forest(preprocessor, best_params=None):
-    # Tham số mặc định hoặc tốt nhất từ notebook
+    # Use tuned hyperparameters if not provided
     if best_params is None:
         best_params = {
             'n_estimators': 121, 
@@ -28,14 +28,14 @@ def get_random_forest(preprocessor, best_params=None):
     ])
 
 def get_svr(preprocessor):
-    # Tham số tốt nhất từ notebook SVM
+    # SVR with optimized hyperparameters
     return Pipeline(steps=[
         ('preprocessor', preprocessor),
         ('regressor', SVR(C=500, epsilon=0.2, gamma='scale'))
     ])
 
 def get_mlp(preprocessor):
-    # Mạng nơ-ron
+    # Two-layer neural network with ReLU activation and early stopping
     return Pipeline(steps=[
         ('preprocessor', preprocessor),
         ('regressor', MLPRegressor(hidden_layer_sizes=(100, 50),
@@ -47,16 +47,13 @@ def get_mlp(preprocessor):
     ])
 
 def get_voting_regressor(preprocessor):
-    # Kết hợp các mô hình trên
-    # Lưu ý: Để VotingRegressor hoạt động trong Pipeline chung, ta cần cẩn thận.
-    # Cách tốt nhất là định nghĩa các pipeline con (đã bao gồm preprocessor) làm estimators.
-    
+    """Combine multiple models via voting ensemble."""
     lr = get_linear_regression(preprocessor)
     rf = get_random_forest(preprocessor)
     svr = get_svr(preprocessor)
     mlp = get_mlp(preprocessor)
     
-    # VotingRegressor không cần preprocessor riêng vì các model con đã có pipeline riêng
+    # Each base model handles its own preprocessing
     voting = VotingRegressor(estimators=[
         ('lr', lr),
         ('rf', rf),

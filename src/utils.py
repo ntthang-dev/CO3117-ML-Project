@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 def evaluate_model(model, X_test, y_test, model_name="Model"):
+    """Evaluate model performance and visualize predictions vs actual values."""
     print(f"\n--- Đánh giá: {model_name} ---")
     y_pred = model.predict(X_test)
 
@@ -14,7 +15,7 @@ def evaluate_model(model, X_test, y_test, model_name="Model"):
     print(f"RMSE : {rmse:.2f}")
     print(f"R2   : {r2:.4f}")
 
-    # Vẽ biểu đồ
+    # Scatter plot with perfect fit reference line
     plt.figure(figsize=(10, 6))
     plt.scatter(y_test, y_pred, alpha=0.5, color='blue', label='Predicted')
     plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2, label='Perfect Fit')
