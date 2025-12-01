@@ -37,6 +37,8 @@ Dự án này được xây dựng nhằm giải quyết bài toán **định gi
 
 Mô hình được huấn luyện trên bộ dữ liệu **10,668 chiếc xe Audi**. Các thông tin được sử dụng để "dạy" máy tính bao gồm:
 
+Nguồn Dataset : Dataset sử dụng trong dự án này ("Audi used car listings") được lấy từ [Kaggle](https://www.kaggle.com/datasets/mysarahmadbhat/audi-used-car-listings)
+
 -   🏎️ **Model:** Dòng xe (A1, A3, Q5, R8...)
 -   📅 **Year:** Năm sản xuất
 -   ⚙️ **Transmission:** Loại hộp số (Tự động, Sàn, Bán tự động)
